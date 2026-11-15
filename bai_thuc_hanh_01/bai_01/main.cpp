@@ -5,12 +5,11 @@
 using namespace std;
 
 string chuanhoaten(string loai) {
-    for (size_t i = 0; i < loai.size(); ++i)
-        loai[i] = tolower(loai[i]);        
+    string chuanhoa = loai;  
     if (loai == "car") return "Car";
     if (loai == "motorcycle") return "Motorcycle";
     if (loai == "bicycle") return "Bicycle";
-    return "";                            
+    return loai;                            
 }
 
 class phuong_tien {
