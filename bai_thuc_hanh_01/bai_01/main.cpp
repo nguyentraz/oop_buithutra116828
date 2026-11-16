@@ -207,11 +207,13 @@ void SystemInterface::runMenu() {
             int ma; char kt;
             cout << "Ma bai: "; cin >> ma;
             cout << "Kich thuoc (S/M/L): "; cin >> kt;
+            
             kt = (char)toupper((unsigned char)kt);
             if (kt != 'S' && kt != 'M' && kt != 'L') {
                 cout << "Kich thuoc khong hop le!\n";
                 break;
             }
+            
             if ((co1 && bai1.lay_ma_bai() == ma) ||
                 (co2 && bai2.lay_ma_bai() == ma) ||
                 (co3 && bai3.lay_ma_bai() == ma)) {
