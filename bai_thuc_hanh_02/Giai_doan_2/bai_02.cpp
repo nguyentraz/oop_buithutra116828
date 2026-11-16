@@ -1,18 +1,15 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
-#include <cctype>
-#include <limits>
 
 using namespace std;
 
 string chuanhoaten(string loai) {
-    for (size_t i = 0; i < loai.size(); ++i)
-        loai[i] = tolower(loai[i]);        
+    string chuanhoa = loai;  
     if (loai == "car") return "Car";
     if (loai == "motorcycle") return "Motorcycle";
     if (loai == "bicycle") return "Bicycle";
-    return "";                            
+    return loai;                            
 }
 
 class phuong_tien {
@@ -90,6 +87,7 @@ public:
 
     int lay_ma_bai() const;
     int lay_so_luong() const;
+    
     bool them(phuong_tien v);
     bool xoa(int ma_xe);
     bool chua(int ma_xe) const;
@@ -197,11 +195,9 @@ int SystemInterface::tim_xe(int ma) const {
         if (baixe[i].chua(ma)) return i;
     return -1;
 }
-
 void SystemInterface::runMenu() {
-    
     while (true) {
-        cout << "\n    QUAN LY BAI DO XE   \n";
+        cout << "\n QUAN LY BAI DO XE \n";
         cout << "1. Tao bai do\n";
         cout << "2. Them xe\n";
         cout << "3. Xoa bai do\n";
@@ -212,12 +208,10 @@ void SystemInterface::runMenu() {
         cout << "8. Bao cao phi trung binh\n";
         cout << "9. Thoat\n";
         cout << "Chon: ";
-        
         int chon;
         scanf("%d",&chon);
-        
+		
         switch (chon) {
-
         case 1: {
             int ma; char kt;
             if (bai_do_hien_tai >= BaiToiDa) {
@@ -240,7 +234,6 @@ void SystemInterface::runMenu() {
             cout << "Da tao bai " << ma << "\n";
             break;
         }
-
         case 2:
 		{
             if (bai_do_hien_tai == 0)
@@ -248,7 +241,6 @@ void SystemInterface::runMenu() {
                 cout << "Chua co bai do nao, hay tao bai.\n";
                 break;
             }
-            
             int ma, gio, tg; string loai;
             cout << "Ma xe: "; cin >> ma;
             cout << "Loai (Car/Motorcycle/Bicycle): "; cin >> loai;
@@ -275,7 +267,6 @@ void SystemInterface::runMenu() {
             else    cout << "Tat ca bai da day.\n";
             break;
         }
-
         case 3: {
             int ma;
             cout << "Ma bai can xoa: "; cin >> ma;
@@ -290,7 +281,6 @@ void SystemInterface::runMenu() {
             cout << "Da xoa bai " << ma << "\n";
             break;
         }
-
         case 4: {
             int ma;
             cout << "Ma xe can lay ra: "; cin >> ma;
@@ -302,13 +292,12 @@ void SystemInterface::runMenu() {
             else cout << "Khong tim thay xe\n";
             break;
         }
-
         case 5:
-            if (bai_do_hien_tai == 0) cout << "Chua co bai do nao.\n";
+            if (bai_do_hien_tai == 0)
+			cout << "Chua co bai do nao.\n";
             for (int i = 0; i < bai_do_hien_tai; i++)
                 baixe[i].hien_thi();
             break;
-
         case 6: {
             int ma;
             cout << "Ma bai: "; cin >> ma;
@@ -317,7 +306,6 @@ void SystemInterface::runMenu() {
             else cout << "Khong tim thay bai " << ma << "\n";
             break;
         }
-
         case 7: {
             string loai;
             cout << "Loai xe: "; cin >> loai;
@@ -334,7 +322,6 @@ void SystemInterface::runMenu() {
             if (!tim_thay) cout << "Khong co xe loai " << loai << "\n";
             break;
         }
-
         case 8: {
             string loai_arr[3] = {"Car", "Motorcycle", "Bicycle"};
             for (int t = 0; t < 3; ++t) {
@@ -351,21 +338,17 @@ void SystemInterface::runMenu() {
             }
             break;
         }
-
         case 9:
             cout << "Dang thoat chuong trinh..." << endl;
             return;
-
         default:
             cout << "Lua chon khong hop le!\n";
             break;
         }
     }
 }
-
 int main() {
     SystemInterface sys;
     sys.runMenu();
     return 0;
 }
-
