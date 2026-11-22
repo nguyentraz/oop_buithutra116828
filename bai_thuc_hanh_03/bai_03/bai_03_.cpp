@@ -12,11 +12,10 @@ string chuanhoaten(const string& loai) {
     if (loai == "bicycle") return "Bicycle";
     return loai;
 }
-
-// Doc so nguyen an toan (khong bi treo khi nhap chu)
-int so(const string& nhac) {
+//chi nhap moi so
+int so(const string& so) {
     int x;
-    cout << nhac;
+    cout << sp;
     while (!(cin >> x)) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -24,7 +23,6 @@ int so(const string& nhac) {
     }
     return x;
 }
-
 
 class phuong_tien {
 private:
@@ -102,9 +100,9 @@ private:
 public:
     bai_xe();
     bai_xe(int ma, char kt);
-    ~bai_xe();                                   // 1. Destructor
-    bai_xe(const bai_xe& other);                 // 2. Copy constructor
-    bai_xe& operator=(const bai_xe& other);      // 3. Copy assignment
+    ~bai_xe();                                   
+    bai_xe(const bai_xe& other);                 
+    bai_xe& operator=(const bai_xe& other);     
 
     int lay_ma_bai() const;
     int lay_so_luong() const;
@@ -359,7 +357,8 @@ void SystemInterface::runMenu() {
         int chon = so("Chon: ");
 
         switch (chon) {
-        case 1: {
+        case 1: 
+            {
             char kt;
             int ma = so("Ma bai: ");
             cout << "Kich thuoc (S/M/L): "; cin >> kt;
@@ -382,7 +381,8 @@ void SystemInterface::runMenu() {
             cout << "Da tao bai " << ma << "\n";
             break;
         }
-        case 2: {
+        case 2: 
+            {
             if (bai_do_hien_tai == 0) {
                 cout << "Chua co bai do nao, hay tao bai.\n";
                 break;
@@ -417,7 +417,8 @@ void SystemInterface::runMenu() {
                  << v.tinh_phi() << "\n";
             break;
         }
-        case 3: {
+        case 3: 
+            {
             int ma = so("Ma bai can xoa: ");
             int vt = tim_bai(ma);
             if (vt == -1) {
@@ -433,7 +434,8 @@ void SystemInterface::runMenu() {
             cout << "Da xoa bai " << ma << "\n";
             break;
         }
-        case 4: {
+        case 4: 
+            {
             int ma = so("Ma xe can lay ra: ");
             int vt = tim_xe(ma);
             if (vt != -1) {
@@ -456,7 +458,8 @@ void SystemInterface::runMenu() {
             else cout << "Khong tim thay bai " << ma << "\n";
             break;
         }
-        case 7: {
+        case 7:
+            {
             string loai;
             cout << "Loai xe: "; cin >> loai;
             loai = chuanhoaten(loai);
@@ -472,7 +475,8 @@ void SystemInterface::runMenu() {
             if (!tim_thay) cout << "Khong co xe loai " << loai << "\n";
             break;
         }
-        case 8: {
+        case 8: 
+            {
             string loai_arr[3] = {"Car", "Motorcycle", "Bicycle"};
             for (int t = 0; t < 3; ++t) {
                 int dem = 0; double tong = 0;
@@ -490,14 +494,13 @@ void SystemInterface::runMenu() {
         }
         case 9:
             cout << "Dang thoat chuong trinh..." << endl;
-            return;   // ra khoi runMenu -> main ket thuc -> ~SystemInterface() don Heap
+            return;   
         default:
             cout << "Lua chon khong hop le!\n";
             break;
         }
     }
 }
-
 int main() {
     SystemInterface sys;
     sys.runMenu();
