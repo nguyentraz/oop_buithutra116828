@@ -1,9 +1,6 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
-#include <cctype>
-#include <limits>
-
 using namespace std;
 
 string chuanhoaten(const string& loai) {
@@ -83,19 +80,18 @@ void phuong_tien::hien_thi() const {
     cout << "  Phi do xe: $" << fixed << setprecision(2) << phi << endl;
 }
 
-
 class bai_xe {
 private:
     int ma_bai;
     char kich_thuoc;
-    int suc_chua_ht;            // suc chua hien tai (S=1, M=2, L=3, tu dong nhan doi)
+    int suc_chua_ht;           
     int so_luong_pt;
     phuong_tien** ds_xe;        // mang con tro dong tren Heap
 
     static int suc_chua_ban_dau(char kt);
-    void mo_rong(int suc_chua_moi);              // resize
-    void giai_phong();                           // delete toan bo
-    void sao_chep_tu(const bai_xe& other);       // deep copy
+    void mo_rong(int suc_chua_moi);              
+    void giai_phong();                           
+    void sao_chep_tu(const bai_xe& other);       
 
 public:
     bai_xe();
@@ -136,7 +132,7 @@ bai_xe::bai_xe(int ma, char kt) {
     ds_xe = new phuong_tien*[suc_chua_ht];
     for (int i = 0; i < suc_chua_ht; i++) ds_xe[i] = nullptr;
 }
-
+//ham giai phong
 void bai_xe::giai_phong() {
     if (ds_xe != nullptr) {
         for (int i = 0; i < so_luong_pt; i++) {
@@ -149,7 +145,7 @@ void bai_xe::giai_phong() {
     so_luong_pt = 0;
     suc_chua_ht = 0;
 }
-
+//ham sao chep
 void bai_xe::sao_chep_tu(const bai_xe& other) {
     ma_bai = other.ma_bai;
     kich_thuoc = other.kich_thuoc;
@@ -177,7 +173,7 @@ bai_xe& bai_xe::operator=(const bai_xe& other) {
     }
     return *this;
 }
-
+//ham mo rong
 void bai_xe::mo_rong(int suc_chua_moi) {
     if (suc_chua_moi <= suc_chua_ht) return;
     phuong_tien** moi = new phuong_tien*[suc_chua_moi];
@@ -233,7 +229,7 @@ bool bai_xe::chua(int ma_xe) const {
     }
     return false;
 }
-
+//ham hien thi
 void bai_xe::hien_thi() const {
     cout << "Bai " << ma_bai << " [" << kich_thuoc << "] "
          << so_luong_pt << "/" << suc_chua_ht << " xe\n";
@@ -252,7 +248,6 @@ bool bai_xe::co_loai(const string& loai, int& dem, double& tong) const {
     }
     return dem > 0;
 }
-
 
 class SystemInterface {
 private:
@@ -493,10 +488,10 @@ void SystemInterface::runMenu() {
             break;
         }
         case 9:
-            cout << "Dang thoat chuong trinh..." << endl;
+            cout << "Goodbye, no see you again!" << endl;
             return;   
         default:
-            cout << "Lua chon khong hop le!\n";
+            cout << "Lua chon chua hop le.Chon lai\n";
             break;
         }
     }
